@@ -1,18 +1,20 @@
 const router = require('express').Router();
+const createNewNote = require('../../lib/notes')
 const { notes } = require('../../Develop/db/db.json')
 
-router.get('/notes', (req, res) => {
+router.get('/api/notes', (req, res) => {
     let results = notes;
+    results = getAndRenderNotes(req, results)
 
     res.json(results);
 });
 
-router.post('/notes', (req, res) => {
+router.post('/api/notes', (req, res) => {
     req.body.id = notes.length.toString();
+
+    const note = createNewNote(req.body, notes)
   
-      // add animal to json file and animals array in this function
-      const note = createNewAnimal(req.body, animals);
-      res.json(animal)
+      res.json(note)
     
   });
 
