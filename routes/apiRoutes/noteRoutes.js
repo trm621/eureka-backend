@@ -1,12 +1,15 @@
 const router = require('express').Router();
-const createNewNote = require('../../lib/notes');
-const { notes } = require('../../Develop/db/db.json')
+const fs = require("fs");
+const path = require("path")
+const { notes } = require('../../db/db.json')
+const { createNewNote } = require('../../lib/notes')
 
-router.get('/api/notes', (req, res) => {
-    res.json(notes);
+router.get("/notes", (req, res) => {
+    let results = notes
+    res.json(results);
 });
 
-router.post('/notes', (req, res) => {
+router.post("/notes", (req, res) => {
     req.body.id = notes.length.toString();
 
     const note = createNewNote(req.body, notes)

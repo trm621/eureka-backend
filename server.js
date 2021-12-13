@@ -1,17 +1,15 @@
-const fs = require('fs');
-const path = require('path');
-
 const apiRoutes = require('./routes/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
-
 const express = require('express');
 const PORT = process.env.PORT || 3001;
 const app = express();
+const fs = require('fs');
+const path = require('path');
 
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use(express.static('public'));
-app.use('/api/notes', apiRoutes);
+app.use('/notes', apiRoutes);
 app.use('/', htmlRoutes);
 
 app.listen(PORT, () => {
