@@ -9,7 +9,7 @@ const path = require('path');
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use(express.static('public'));
-app.use('/notes', apiRoutes);
+app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
 app.listen(PORT, () => {
