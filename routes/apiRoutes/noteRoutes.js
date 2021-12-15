@@ -9,9 +9,6 @@ router.get("/notes", (req, res) => {
 router.post("/notes", (req, res) => {
     notes.addNotes(req.body)
     .then(notes => res.json(notes))
-
-    const note = createNewNote(req.body, notes)
-    res.json(note)
   });
 
 module.exports = router;
